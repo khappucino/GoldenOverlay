@@ -13,6 +13,10 @@
 		F46DD2F31A3D047600797E1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46DD2F21A3D047600797E1A /* Images.xcassets */; };
 		F46DD2F61A3D047600797E1A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46DD2F41A3D047600797E1A /* LaunchScreen.xib */; };
 		F46DD3021A3D047600797E1A /* GoldenOverlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3011A3D047600797E1A /* GoldenOverlayTests.swift */; };
+		F46DD30E1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */; };
+		F46DD30F1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */; };
+		F46DD3111A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */; };
+		F46DD3121A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,8 @@
 		F46DD2FB1A3D047600797E1A /* GoldenOverlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoldenOverlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46DD3001A3D047600797E1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F46DD3011A3D047600797E1A /* GoldenOverlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldenOverlayTests.swift; sourceTree = "<group>"; };
+		F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayView.swift; sourceTree = "<group>"; };
+		F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,8 @@
 		F46DD2E81A3D047600797E1A /* GoldenOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				F46DD30C1A3D1BCC00797E1A /* Views */,
+				F46DD30B1A3D1BBE00797E1A /* ViewModels */,
 				F46DD2EB1A3D047600797E1A /* AppDelegate.swift */,
 				F46DD2ED1A3D047600797E1A /* ViewController.swift */,
 				F46DD2EF1A3D047600797E1A /* Main.storyboard */,
@@ -110,6 +118,22 @@
 				F46DD3001A3D047600797E1A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F46DD30B1A3D1BBE00797E1A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		F46DD30C1A3D1BCC00797E1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +236,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46DD30E1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */,
 				F46DD2EE1A3D047600797E1A /* ViewController.swift in Sources */,
+				F46DD3111A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */,
 				F46DD2EC1A3D047600797E1A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +247,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46DD3121A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */,
+				F46DD30F1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */,
 				F46DD3021A3D047600797E1A /* GoldenOverlayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
