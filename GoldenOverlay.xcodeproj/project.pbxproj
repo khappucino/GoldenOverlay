@@ -17,6 +17,7 @@
 		F46DD30F1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */; };
 		F46DD3111A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */; };
 		F46DD3121A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */; };
+		F46DD3151A401AB900797E1A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3141A401AB900797E1A /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		F46DD3011A3D047600797E1A /* GoldenOverlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldenOverlayTests.swift; sourceTree = "<group>"; };
 		F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayView.swift; sourceTree = "<group>"; };
 		F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayViewModel.swift; sourceTree = "<group>"; };
+		F46DD3141A401AB900797E1A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		F46DD2E81A3D047600797E1A /* GoldenOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				F46DD3131A401A8B00797E1A /* Observer */,
 				F46DD30C1A3D1BCC00797E1A /* Views */,
 				F46DD30B1A3D1BBE00797E1A /* ViewModels */,
 				F46DD2EB1A3D047600797E1A /* AppDelegate.swift */,
@@ -134,6 +137,14 @@
 				F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		F46DD3131A401A8B00797E1A /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				F46DD3141A401AB900797E1A /* Observable.swift */,
+			);
+			name = Observer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46DD30E1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */,
+				F46DD3151A401AB900797E1A /* Observable.swift in Sources */,
 				F46DD2EE1A3D047600797E1A /* ViewController.swift in Sources */,
 				F46DD3111A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */,
 				F46DD2EC1A3D047600797E1A /* AppDelegate.swift in Sources */,
@@ -435,6 +447,7 @@
 				F46DD3071A3D047600797E1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F46DD3081A3D047600797E1A /* Build configuration list for PBXNativeTarget "GoldenOverlayTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +456,7 @@
 				F46DD30A1A3D047600797E1A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
