@@ -12,29 +12,40 @@ protocol Observer {
     func update(observable : Observable)
 }
 
+func ==(lhs: Observer, rhs: Observer) -> Bool {
+    return lhs == rhs
+}
+
 class Observable {
     
     var changed : Bool
-    
-    var observers : [Observer]
+    var observers : [Observer]?
     
     init() {
         self.changed = true
         self.observers = []
     }
     
-    func addObserver(observer : Observer) {
-        ghettoSync(self, closure: {
-            let x = self.observers.filter({ (obs : Observer) -> Bool in
-               return true
-            })
-            if(0 == x.count) {
-               self.observers.append(observer)
+    func addObserver<T : Observer>(observer : T) {
+        ghettoSync(self, closure:  { [weak self] in
+            if let weakSelf = self {
+                let isObserverInSetAlready : Bool = contains(weakSelf.observers, {
+                    (obs : Observer) -> Bool in
+                    if observer == obs {
+                        return true
+                    } else {
+                        return false
+                    }
+                })
+                
+                if !isObserverInSetAlready {
+                
+                }
             }
         })
     }
     
-    func removeObserver(observer : Observer) {
+    func removeObserver<T:Observer>(observer : T) {
         ghettoSync(self, closure: {
             
         })
