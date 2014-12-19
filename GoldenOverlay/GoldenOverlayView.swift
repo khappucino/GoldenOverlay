@@ -8,13 +8,12 @@
 
 import UIKit
 
-class GoldenOverlayView: UIView, UIGestureRecognizerDelegate {
+class GoldenOverlayView: UIView {
     
     let viewModel : GoldenOverlayViewModel
     let panGestureRecognizer : UIPanGestureRecognizer
     let rotateGestureRecognizer : UIRotationGestureRecognizer
     let zoomGestureRecognizer : UIPinchGestureRecognizer
-    
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -31,7 +30,6 @@ class GoldenOverlayView: UIView, UIGestureRecognizerDelegate {
         UIGraphicsEndImageContext();
     }
     
-
     override init(frame: CGRect) {
         self.viewModel = GoldenOverlayViewModel()
         self.panGestureRecognizer = UIPanGestureRecognizer()
@@ -41,28 +39,38 @@ class GoldenOverlayView: UIView, UIGestureRecognizerDelegate {
         super.init(frame: frame);
         self.backgroundColor = UIColor.clearColor();
         
-        setupViewModels()
+        self.viewModel.addObserver(self)
+        
         setupGestureRecognizers()
+    }
 
-    }
-   
-    func setupViewModels() {
-        self.viewModel.setObservationClosure(observationClosure: {
-            [weak self](viewModel : GoldenOverlayViewModel) in
-            let (posx, posy) = viewModel.getPosition()
-            if let view = self {
-                view.center = CGPoint(x: CGFloat(posx), y: CGFloat(posy))
-            }
-        })
-    }
-   
     override func didMoveToSuperview() {
         self.viewModel.setInitialPosition(x: Float(self.center.x), y: Float(self.center.y))
+    }
+}
+
+// helper methods
+extension GoldenOverlayView {
+    
+    func updateState() {
+        let (posx, posy) = viewModel.getPosition()
+        let scalex = viewModel.getScale()
+        self.center = CGPoint(x: CGFloat(posx), y: CGFloat(posy))
+        self.transform = CGAffineTransformScale(self.transform, CGFloat(scalex), CGFloat(scalex))
 
     }
     
+    func calculatePanPoint(sender : UIPanGestureRecognizer) -> CGPoint
+    {
+        if let parentView = self.superview {
+            return sender.translationInView(parentView)
+        } else {
+            return CGPoint(x: 0,y: 0)
+        }
+        
+    }
+    
     func setupGestureRecognizers() {
-        // add target/selectors after super.init
         self.panGestureRecognizer.addTarget(self, action: "pan:")
         self.panGestureRecognizer.delegate = self
         self.panGestureRecognizer.maximumNumberOfTouches = 1;
@@ -76,10 +84,16 @@ class GoldenOverlayView: UIView, UIGestureRecognizerDelegate {
         self.rotateGestureRecognizer.delegate = self
         self.addGestureRecognizer(self.rotateGestureRecognizer)
     }
-    
 }
 
-extension GoldenOverlayView {
+extension GoldenOverlayView : BaconObserverType {
+    func update(observable: BaconObservable) {
+        // we call master update regardless of what observable fired
+        self.updateState()
+    }
+}
+
+extension GoldenOverlayView : UIGestureRecognizerDelegate {
     
     func pan(sender : UIPanGestureRecognizer) {
         let point = calculatePanPoint(sender)
@@ -95,7 +109,13 @@ extension GoldenOverlayView {
     }
     
     func zoom(sender : UIPinchGestureRecognizer) {
-        
+        if(sender.state == UIGestureRecognizerState.Began) {
+        }
+        else if(sender.state == UIGestureRecognizerState.Changed) {
+            self.viewModel.updateScaleTouch(Float(sender.scale))
+        }
+        else {
+        }
     }
     
     func rotate(sender : UIRotationGestureRecognizer) {
@@ -103,15 +123,4 @@ extension GoldenOverlayView {
     }
 }
 
-// helper methods
-extension GoldenOverlayView {
-    func calculatePanPoint(sender : UIPanGestureRecognizer) -> CGPoint
-    {
-        if let parentView = self.superview {
-            return sender.translationInView(parentView)
-        } else {
-            return CGPoint(x: 0,y: 0)
-        }
-        
-    }
-}
+

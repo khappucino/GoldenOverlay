@@ -8,30 +8,44 @@
 
 import Foundation
 
-class GoldenOverlayViewModel {
+class GoldenOverlayViewModel : BaconObservable {
     
     var position : (Float, Float)
     var lastPanPoint : (Float, Float)
-    var notifyObserverClosure : ((GoldenOverlayViewModel) -> Void)?
-    
-    init() {
+    var zoomScale : Float
+
+    override init() {
         self.lastPanPoint = (0,0)
         self.position = (0,0)
+        self.zoomScale = 1.0
+        super.init()
     }
-    
 
     func getPosition() -> (Float, Float) {
         return self.position
     }
     
+    func getScale() -> Float {
+        return self.zoomScale
+    }
+    
     func setInitialPosition(x xvalue : Float, y yvalue : Float) {
         self.position = (xvalue, yvalue)
     }
-    
-    func setObservationClosure(observationClosure closure: (GoldenOverlayViewModel) -> Void) {
-        self.notifyObserverClosure = closure
+
+}
+
+extension GoldenOverlayViewModel {
+    func updateScaleTouch(scale: Float) {
+        self.zoomScale = scale
+        
+        self.setChanged()
+        self.notifyObservers()
     }
-    
+}
+
+
+extension GoldenOverlayViewModel {
     
     func beginPanTouch(x xvalue : Float, y yvalue : Float) {
         self.lastPanPoint = (xvalue, yvalue)
@@ -40,16 +54,16 @@ class GoldenOverlayViewModel {
     func updatePanTouch(x xvalue : Float, y yvalue : Float) {
         let (lastPanPointx, lastPanPointy) = self.lastPanPoint
         let (translationX, translationY) = (xvalue - lastPanPointx,
-                                            yvalue - lastPanPointy)
+            yvalue - lastPanPointy)
         let (currentX, currentY) = self.position
-
+        
         self.lastPanPoint = (xvalue, yvalue)
         self.position = (currentX + translationX,
-                         currentY + translationY)
+            currentY + translationY)
         
-        if let notify = self.notifyObserverClosure {
-            notify(self)
-        }
+        self.setChanged()
+        self.notifyObservers()
+        
     }
     
     func endPanTouch(x xvalue : Float, y yvalue : Float) {
@@ -62,8 +76,8 @@ class GoldenOverlayViewModel {
         self.position = (currentX + translationX,
             currentY + translationY)
         
-        if let notify = self.notifyObserverClosure {
-            notify(self)
-        }
+        self.setChanged()
+        self.notifyObservers()
     }
+
 }

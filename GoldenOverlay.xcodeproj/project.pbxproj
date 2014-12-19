@@ -17,7 +17,8 @@
 		F46DD30F1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */; };
 		F46DD3111A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */; };
 		F46DD3121A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */; };
-		F46DD3151A401AB900797E1A /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3141A401AB900797E1A /* Observable.swift */; };
+		F4BF7E101A43ECD300FFD58F /* BaconObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF7E0F1A43ECD300FFD58F /* BaconObserver.swift */; };
+		F4BF7E111A43ECD300FFD58F /* BaconObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF7E0F1A43ECD300FFD58F /* BaconObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,7 @@
 		F46DD3011A3D047600797E1A /* GoldenOverlayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoldenOverlayTests.swift; sourceTree = "<group>"; };
 		F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayView.swift; sourceTree = "<group>"; };
 		F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayViewModel.swift; sourceTree = "<group>"; };
-		F46DD3141A401AB900797E1A /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		F4BF7E0F1A43ECD300FFD58F /* BaconObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaconObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +143,7 @@
 		F46DD3131A401A8B00797E1A /* Observer */ = {
 			isa = PBXGroup;
 			children = (
-				F46DD3141A401AB900797E1A /* Observable.swift */,
+				F4BF7E0F1A43ECD300FFD58F /* BaconObserver.swift */,
 			);
 			name = Observer;
 			sourceTree = "<group>";
@@ -248,9 +249,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46DD30E1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */,
-				F46DD3151A401AB900797E1A /* Observable.swift in Sources */,
 				F46DD2EE1A3D047600797E1A /* ViewController.swift in Sources */,
 				F46DD3111A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */,
+				F4BF7E101A43ECD300FFD58F /* BaconObserver.swift in Sources */,
 				F46DD2EC1A3D047600797E1A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46DD3121A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */,
+				F4BF7E111A43ECD300FFD58F /* BaconObserver.swift in Sources */,
 				F46DD30F1A3D1BEC00797E1A /* GoldenOverlayView.swift in Sources */,
 				F46DD3021A3D047600797E1A /* GoldenOverlayTests.swift in Sources */,
 			);
