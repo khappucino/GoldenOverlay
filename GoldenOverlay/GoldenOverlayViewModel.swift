@@ -38,7 +38,11 @@ class GoldenOverlayViewModel : BaconObservable {
 extension GoldenOverlayViewModel {
     func updateScaleTouch(scale: Float) {
         self.zoomScale = scale
-        
+        if self.zoomScale > 10 {
+            self.zoomScale = 10
+        } else if  self.zoomScale < 0.5 {
+            self.zoomScale = 0.5
+        }
         self.setChanged()
         self.notifyObservers()
     }
@@ -63,7 +67,6 @@ extension GoldenOverlayViewModel {
         
         self.setChanged()
         self.notifyObservers()
-        
     }
     
     func endPanTouch(x xvalue : Float, y yvalue : Float) {
