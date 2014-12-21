@@ -8,6 +8,10 @@
 
 import Foundation
 
+let BaconPi : Float = 3.14159265358979323846264338327950288
+let BaconMaxZoom : Float = 10
+let BaconMinZoom : Float = 0.5
+
 class GoldenOverlayViewModel : BaconObservable {
     
     var position : (Float, Float)
@@ -15,6 +19,7 @@ class GoldenOverlayViewModel : BaconObservable {
     var zoomScale : Float
     var rotationAngle : Float
     var initialRotate : Float
+    var initialZoom : Float
 
     override init() {
         self.lastPanPoint = (0,0)
@@ -22,6 +27,7 @@ class GoldenOverlayViewModel : BaconObservable {
         self.zoomScale = 1.0
         self.rotationAngle = 0
         self.initialRotate = 0
+        self.initialZoom = 0
         super.init()
     }
 
@@ -40,18 +46,43 @@ class GoldenOverlayViewModel : BaconObservable {
     func setInitialPosition(x xvalue : Float, y yvalue : Float) {
         self.position = (xvalue, yvalue)
     }
+    
+    func clampRotation(inputRotationAngle : Float) -> Float {
+        
+        println("before %f", inputRotationAngle)
+        var rotAngle : Float = inputRotationAngle
+        if rotAngle > 2*BaconPi {
+            println("past 2pi", inputRotationAngle)
+            rotAngle = rotAngle - 2*BaconPi
+        } else if rotAngle < 0 {
+            println("past 0", inputRotationAngle)
+            rotAngle = 2*BaconPi + rotAngle
+        }
+        let x = rotAngle
+        println("after %f", x)
+        return rotAngle
+    }
+    
+    func clampZoom(inputZoomScale : Float) -> Float {
+        var zoomScale : Float = inputZoomScale
+        if zoomScale > BaconMaxZoom {
+            zoomScale = BaconMaxZoom
+        } else if zoomScale < BaconMinZoom {
+            zoomScale = BaconMinZoom
+        }
+        return zoomScale
+    }
 
 }
 
 extension GoldenOverlayViewModel {
    
+    func beginRotateTouch() {
+        self.initialRotate = self.rotationAngle
+    }
+    
     func updateRotateTouch(rotation: Float) {
-        self.rotationAngle = rotation
-        if self.rotationAngle > 2*3.14 {
-            self.rotationAngle = self.rotationAngle - 2*3.14
-        } else if self.rotationAngle < 0 {
-            self.rotationAngle = 2*3.14 + self.rotationAngle
-        }
+        self.rotationAngle = clampRotation(rotation + self.initialRotate)
         self.setChanged()
         self.notifyObservers()
     }
@@ -59,16 +90,17 @@ extension GoldenOverlayViewModel {
 }
 
 extension GoldenOverlayViewModel {
+    
+    func beginScaleTouch() {
+        self.initialZoom = self.zoomScale
+    }
+    
     func updateScaleTouch(scale: Float) {
-        self.zoomScale = scale
-        if self.zoomScale > 10 {
-            self.zoomScale = 10
-        } else if  self.zoomScale < 0.5 {
-            self.zoomScale = 0.5
-        }
+        self.zoomScale = clampZoom(scale * self.initialZoom)
         self.setChanged()
         self.notifyObservers()
     }
+    
 }
 
 

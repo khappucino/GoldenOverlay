@@ -55,7 +55,7 @@ extension GoldenOverlayView {
     func updateState() {
         let (posx, posy) = viewModel.getPosition()
         let scalex = viewModel.getScale()
-        let rotationAngle = viewModel.getRotationAngle() //* (2.0 * 3.14) / (360)
+        let rotationAngle = viewModel.getRotationAngle() 
         self.center = CGPoint(x: CGFloat(posx), y: CGFloat(posy))
         self.transform = CGAffineTransformIdentity
         self.transform = CGAffineTransformScale(self.transform, CGFloat(scalex), CGFloat(scalex))
@@ -117,6 +117,7 @@ extension GoldenOverlayView : UIGestureRecognizerDelegate {
     
     func zoom(sender : UIPinchGestureRecognizer) {
         if(sender.state == UIGestureRecognizerState.Began) {
+            self.viewModel.beginScaleTouch()
         }
         else if(sender.state == UIGestureRecognizerState.Changed) {
             self.viewModel.updateScaleTouch(Float(sender.scale))
@@ -127,6 +128,7 @@ extension GoldenOverlayView : UIGestureRecognizerDelegate {
     
     func rotate(sender : UIRotationGestureRecognizer) {
         if(sender.state == UIGestureRecognizerState.Began) {
+            self.viewModel.beginRotateTouch()
         }
         else if(sender.state == UIGestureRecognizerState.Changed) {
             self.viewModel.updateRotateTouch(Float(sender.rotation))
