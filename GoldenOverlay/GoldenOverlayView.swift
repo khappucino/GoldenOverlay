@@ -55,8 +55,11 @@ extension GoldenOverlayView {
     func updateState() {
         let (posx, posy) = viewModel.getPosition()
         let scalex = viewModel.getScale()
+        let rotationAngle = viewModel.getRotationAngle() //* (2.0 * 3.14) / (360)
         self.center = CGPoint(x: CGFloat(posx), y: CGFloat(posy))
+        self.transform = CGAffineTransformIdentity
         self.transform = CGAffineTransformScale(self.transform, CGFloat(scalex), CGFloat(scalex))
+        self.transform = CGAffineTransformRotate(self.transform, CGFloat(rotationAngle))
 
     }
     
@@ -95,6 +98,10 @@ extension GoldenOverlayView : BaconObserverType {
 
 extension GoldenOverlayView : UIGestureRecognizerDelegate {
     
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     func pan(sender : UIPanGestureRecognizer) {
         let point = calculatePanPoint(sender)
         if(sender.state == UIGestureRecognizerState.Began) {
@@ -119,7 +126,13 @@ extension GoldenOverlayView : UIGestureRecognizerDelegate {
     }
     
     func rotate(sender : UIRotationGestureRecognizer) {
-        
+        if(sender.state == UIGestureRecognizerState.Began) {
+        }
+        else if(sender.state == UIGestureRecognizerState.Changed) {
+            self.viewModel.updateRotateTouch(Float(sender.rotation))
+        }
+        else {
+        }
     }
 }
 

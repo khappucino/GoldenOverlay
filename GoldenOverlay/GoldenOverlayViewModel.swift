@@ -13,11 +13,15 @@ class GoldenOverlayViewModel : BaconObservable {
     var position : (Float, Float)
     var lastPanPoint : (Float, Float)
     var zoomScale : Float
+    var rotationAngle : Float
+    var initialRotate : Float
 
     override init() {
         self.lastPanPoint = (0,0)
         self.position = (0,0)
         self.zoomScale = 1.0
+        self.rotationAngle = 0
+        self.initialRotate = 0
         super.init()
     }
 
@@ -29,8 +33,27 @@ class GoldenOverlayViewModel : BaconObservable {
         return self.zoomScale
     }
     
+    func getRotationAngle() -> Float {
+        return self.rotationAngle
+    }
+    
     func setInitialPosition(x xvalue : Float, y yvalue : Float) {
         self.position = (xvalue, yvalue)
+    }
+
+}
+
+extension GoldenOverlayViewModel {
+   
+    func updateRotateTouch(rotation: Float) {
+        self.rotationAngle = rotation
+        if self.rotationAngle > 2*3.14 {
+            self.rotationAngle = self.rotationAngle - 2*3.14
+        } else if self.rotationAngle < 0 {
+            self.rotationAngle = 2*3.14 + self.rotationAngle
+        }
+        self.setChanged()
+        self.notifyObservers()
     }
 
 }
