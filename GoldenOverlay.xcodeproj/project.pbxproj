@@ -19,6 +19,8 @@
 		F46DD3121A3E15BC00797E1A /* GoldenOverlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */; };
 		F4BF7E101A43ECD300FFD58F /* BaconObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF7E0F1A43ECD300FFD58F /* BaconObserver.swift */; };
 		F4BF7E111A43ECD300FFD58F /* BaconObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF7E0F1A43ECD300FFD58F /* BaconObserver.swift */; };
+		F4BF7E131A469CA600FFD58F /* o-GAL-GADOT-facebook.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BF7E121A469CA600FFD58F /* o-GAL-GADOT-facebook.jpg */; };
+		F4BF7E151A469D8A00FFD58F /* Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4BF7E141A469D8A00FFD58F /* Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		F46DD30D1A3D1BEC00797E1A /* GoldenOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayView.swift; sourceTree = "<group>"; };
 		F46DD3101A3E15BC00797E1A /* GoldenOverlayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoldenOverlayViewModel.swift; sourceTree = "<group>"; };
 		F4BF7E0F1A43ECD300FFD58F /* BaconObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaconObserver.swift; sourceTree = "<group>"; };
+		F4BF7E121A469CA600FFD58F /* o-GAL-GADOT-facebook.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "o-GAL-GADOT-facebook.jpg"; sourceTree = "<group>"; };
+		F4BF7E141A469D8A00FFD58F /* Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,8 @@
 		F46DD2E81A3D047600797E1A /* GoldenOverlay */ = {
 			isa = PBXGroup;
 			children = (
+				F4BF7E141A469D8A00FFD58F /* Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg */,
+				F4BF7E121A469CA600FFD58F /* o-GAL-GADOT-facebook.jpg */,
 				F46DD3131A401A8B00797E1A /* Observer */,
 				F46DD30C1A3D1BCC00797E1A /* Views */,
 				F46DD30B1A3D1BBE00797E1A /* ViewModels */,
@@ -228,8 +234,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BF7E151A469D8A00FFD58F /* Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg in Resources */,
 				F46DD2F11A3D047600797E1A /* Main.storyboard in Resources */,
 				F46DD2F61A3D047600797E1A /* LaunchScreen.xib in Resources */,
+				F4BF7E131A469CA600FFD58F /* o-GAL-GADOT-facebook.jpg in Resources */,
 				F46DD2F31A3D047600797E1A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

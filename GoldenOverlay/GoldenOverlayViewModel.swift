@@ -20,6 +20,7 @@ class GoldenOverlayViewModel : BaconObservable {
     var rotationAngle : Float
     var initialRotate : Float
     var initialZoom : Float
+    var clockWise : Bool
 
     override init() {
         self.lastPanPoint = (0,0)
@@ -28,9 +29,20 @@ class GoldenOverlayViewModel : BaconObservable {
         self.rotationAngle = 0
         self.initialRotate = 0
         self.initialZoom = 0
+        self.clockWise = true
         super.init()
     }
 
+    func setToggle() {
+        self.clockWise = !self.clockWise
+        self.setChanged()
+        self.notifyObservers()
+    }
+    
+    func getClockWise() -> Bool {
+        return self.clockWise
+    }
+    
     func getPosition() -> (Float, Float) {
         return self.position
     }

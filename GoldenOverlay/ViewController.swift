@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frames = CGRectMake(0, 0, 100*1.618, 100)
+        let frames = CGRectMake(0, 0, 100*BaconRatio, 100)
         let v : GoldenOverlayView = GoldenOverlayView(frame : frames)
         self.view.addSubview(v)
         v.setNeedsDisplay()

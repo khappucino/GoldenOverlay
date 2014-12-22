@@ -8,12 +8,15 @@
 
 import UIKit
 
+let BaconRatio : CGFloat = 1.61803398875
+
 class GoldenOverlayView: UIView {
     
     let viewModel : GoldenOverlayViewModel
     let panGestureRecognizer : UIPanGestureRecognizer
     let rotateGestureRecognizer : UIRotationGestureRecognizer
     let zoomGestureRecognizer : UIPinchGestureRecognizer
+    let doubleTapGestureRecognizer : UITapGestureRecognizer
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -21,11 +24,28 @@ class GoldenOverlayView: UIView {
     
     override func drawRect(rect: CGRect) {
         let ctx : CGContextRef = UIGraphicsGetCurrentContext()
+        let width = self.frame.size.width
+        let height = self.frame.size.height
         CGContextSetLineWidth(ctx, 2.0);
         CGContextSetStrokeColorWithColor(ctx, UIColor.greenColor().CGColor);
         CGContextAddRect(ctx, self.frame);
-        CGContextMoveToPoint(ctx, self.frame.size.width * 1/1.618, 0);
-        CGContextAddLineToPoint(ctx, self.frame.size.width * 1/1.618, self.frame.size.height);
+        
+        let direction = self.viewModel.getClockWise()
+        if direction == true {
+            CGContextMoveToPoint(ctx, width * 1/BaconRatio, 0);
+            CGContextAddLineToPoint(ctx, width * 1/BaconRatio, height);
+            CGContextMoveToPoint(ctx, 0, height)
+            CGContextAddArcToPoint(ctx, 0, 0, height, 0, height)
+            CGContextMoveToPoint(ctx, height, 0)
+            CGContextAddArcToPoint(ctx, width, 0, width, height * 1/BaconRatio, height * 1/BaconRatio)
+            CGContextMoveToPoint(ctx, width, height * 1/BaconRatio)
+            CGContextAddArcToPoint(ctx, width, height, width - height * 1/(BaconRatio*2), height, height * 1/(BaconRatio*2))
+
+        } else {
+
+        }
+        
+        
         CGContextStrokePath(ctx);
         UIGraphicsEndImageContext();
     }
@@ -35,6 +55,7 @@ class GoldenOverlayView: UIView {
         self.panGestureRecognizer = UIPanGestureRecognizer()
         self.rotateGestureRecognizer = UIRotationGestureRecognizer()
         self.zoomGestureRecognizer = UIPinchGestureRecognizer()
+        self.doubleTapGestureRecognizer = UITapGestureRecognizer()
         
         super.init(frame: frame);
         self.backgroundColor = UIColor.clearColor();
@@ -86,6 +107,11 @@ extension GoldenOverlayView {
         self.rotateGestureRecognizer.addTarget(self, action: "rotate:")
         self.rotateGestureRecognizer.delegate = self
         self.addGestureRecognizer(self.rotateGestureRecognizer)
+        
+        self.doubleTapGestureRecognizer.addTarget(self, action: "doubleTap")
+        self.doubleTapGestureRecognizer.delegate = self
+        self.doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        self.addGestureRecognizer(self.doubleTapGestureRecognizer)
     }
 }
 
@@ -135,6 +161,10 @@ extension GoldenOverlayView : UIGestureRecognizerDelegate {
         }
         else {
         }
+    }
+    
+    func doubleTap(sender : UITapGestureRecognizer) {
+        self.viewModel.setToggle()
     }
 }
 
