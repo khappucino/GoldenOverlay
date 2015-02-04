@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZUW-c9-HaB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="stairway.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZUW-c9-HaB">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
@@ -35,6 +35,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Entertainment-Weekly-natalie-portman-21435512-1458-2000.jpg" width="1458" height="2000"/>
+        <image name="stairway.jpg" width="1287" height="3040"/>
     </resources>
 </document>
